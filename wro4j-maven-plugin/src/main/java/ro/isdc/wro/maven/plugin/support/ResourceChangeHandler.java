@@ -173,8 +173,9 @@ public class ResourceChangeHandler {
       }
 
       @Override
-      protected String doTransform(final String cssContent, final List<Resource> foundImports)
+      protected String doTransform(final String cssContent, final String resourceUri)
           throws IOException {
+        findImportedResources(resourceUri, cssContent);
         // no need to build the content, since we are interested in finding imported resources only
         return "";
       }

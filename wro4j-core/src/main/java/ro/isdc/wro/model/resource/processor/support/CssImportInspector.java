@@ -30,6 +30,13 @@ public class CssImportInspector {
   }
 
   /**
+   * @return the instanciated {@link Matcher} for external usage.
+   */
+  public Matcher getMatcher() {
+    return matcher;
+  }
+
+  /**
    * @return a {@link Matcher} for the processed content using the regexp responsible for identifying css import
    * statements.
    */

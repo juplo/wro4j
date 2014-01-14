@@ -125,8 +125,7 @@ public abstract class AbstractCssImportPreProcessor
     }
     final String importedUri = resource.getUri().replace(File.separatorChar,'/');
     addProcessedImport(importedUri);
-    final List<Resource> importedResources = findImportedResources(resource.getUri(), cssContent);
-    return doTransform(cssContent, importedResources);
+    return doTransform(cssContent, resource.getUri());
   }
 
   private boolean isImportProcessed(final String uri) {
@@ -157,7 +156,7 @@ public abstract class AbstractCssImportPreProcessor
   /**
    * Find a set of imported resources inside a given resource.
    */
-  private List<Resource> findImportedResources(final String resourceUri, final String cssContent)
+  protected List<Resource> findImportedResources(final String resourceUri, final String cssContent)
     throws IOException {
     // it should be sorted
     final List<Resource> imports = new ArrayList<Resource>();
@@ -188,7 +187,7 @@ public abstract class AbstractCssImportPreProcessor
   /**
    * Build a {@link Resource} object from a found importedResource inside a given resource.
    */
-  private Resource createImportedResource(final String resourceUri, final String importUrl) {
+  protected Resource createImportedResource(final String resourceUri, final String importUrl) {
     final String absoluteUrl = computeAbsoluteUrl(resourceUri, importUrl);
     return Resource.create(absoluteUrl, ResourceType.CSS);
   }
@@ -215,7 +214,7 @@ public abstract class AbstractCssImportPreProcessor
    * @param importedResources
    *          the list of found imports.
    */
-  protected abstract String doTransform(final String cssContent, final List<Resource> importedResources)
+  protected abstract String doTransform(final String cssContent, final String resourceUri)
       throws IOException;
 
 

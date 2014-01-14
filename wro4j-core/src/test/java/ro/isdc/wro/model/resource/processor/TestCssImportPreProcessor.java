@@ -134,11 +134,6 @@ public class TestCssImportPreProcessor {
         assertEquals(expected, foundImportUri);
         found.set(true);
       }
-      @Override
-      protected String doTransform(final String cssContent, final List<Resource> foundImports)
-          throws IOException {
-        return "";
-      }
     };
     WroTestUtils.initProcessor(victim);
     victim.process(Resource.create("/css/parent.css"), new StringReader(content), new StringWriter());

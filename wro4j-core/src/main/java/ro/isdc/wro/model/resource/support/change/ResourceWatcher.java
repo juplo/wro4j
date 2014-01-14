@@ -254,7 +254,7 @@ public class ResourceWatcher
       };
 
       @Override
-      protected String doTransform(final String cssContent, final List<Resource> foundImports)
+      protected String doTransform(final String cssContent, final String resourceUri)
           throws IOException {
         // no need to build the content, since we are interested in finding imported resources only
         return "";
