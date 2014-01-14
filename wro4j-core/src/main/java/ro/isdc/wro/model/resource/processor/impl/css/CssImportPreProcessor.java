@@ -4,6 +4,7 @@
 package ro.isdc.wro.model.resource.processor.impl.css;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -37,14 +38,15 @@ public class CssImportPreProcessor
 
   public static final String ALIAS = "cssImport";
   @Inject
-  private PreProcessorExecutor preProcessorExecutor;
+  protected PreProcessorExecutor preProcessorExecutor;
 
   /**
    * {@inheritDoc}
    */
   @Override
-  protected String doTransform(final String cssContent, final List<Resource> foundImports)
+  protected String doTransform(final String cssContent, final String resourceUri)
       throws IOException {
+    final List<Resource> foundImports = findImportedResources(resourceUri, cssContent);
     final StringBuilder sb = new StringBuilder();
     // for now, minimize always
     // TODO: find a way to get minimize property dynamically.
