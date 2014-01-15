@@ -1,0 +1,15 @@
+@media screen and (max-width: 600px) {
+  @import url('css/import1.css');
+}
+ul li {
+  list-style: none;
+}
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
