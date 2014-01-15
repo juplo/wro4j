@@ -29,4 +29,15 @@ public class LessCssImportInspector
   protected Matcher getMatcher(final String cssContent) {
     return PATTERN.matcher(cssContent);
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String extractImportUrl(final Matcher matcher) {
+    int i = 1;
+    while (i < 4 && getMatcher().group(i) == null)
+      i++;
+    return getMatcher().group(i);
+  }
 }

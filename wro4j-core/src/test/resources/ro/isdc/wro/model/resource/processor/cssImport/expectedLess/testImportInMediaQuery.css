@@ -1,4 +1,5 @@
-div.import1a {
+@media screen and (max-width: 600px) {
+  div.import1a {
   color: red;
 }
 
@@ -10,14 +11,7 @@ div.import1 {
   color: red;
 }
 
-div.import2 {
-  color: red;
 }
-
-div.import3 {
-  color: red;
-}
-
 ul li {
   list-style: none;
 }
